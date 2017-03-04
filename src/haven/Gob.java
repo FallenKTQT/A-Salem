@@ -243,6 +243,21 @@ public class Gob implements Sprite.Owner, Skeleton.ModOwner, Rendered {
             }
         }
         
+        if(true){
+            Composite comp = this.getattr(Composite.class);
+            boolean frog = false;
+            
+            if(comp!=null && comp.base != null)
+            {
+                frog = comp.base.get().name.contains("kritter");
+                if(frog)
+                    frog = comp.base.get().name.contains("frog") || comp.base.get().name.contains("butterfly") || comp.base.get().name.contains("crab");
+            }
+            
+            if(frog)
+                comp.prepc_location = TreeSprite.mkscale(5.0f);
+        }
+        
         //highlight fruit trees with fruit and thornbushes with flowers
         if(Config.farmermodetrees){
             boolean thornbush = false;
@@ -292,12 +307,12 @@ public class Gob implements Sprite.Owner, Skeleton.ModOwner, Rendered {
 		}
 		else if(rd.spr!= null && ((StaticSprite)rd.spr).parts.length > 2 && rd.sdt.toString().equals("Message(0): 03 00 00 00 "))
 		{
-				((StaticSprite)rd.spr).prepc_location = TreeSprite.mkscale(0.5f);
+                        ((StaticSprite)rd.spr).prepc_location = TreeSprite.mkscale(0.5f);
 		}
                 else
                 {
                     if(rd.spr!=null)
-                            ((StaticSprite)rd.spr).prepc_location = TreeSprite.mkscale(0.2f);
+                        ((StaticSprite)rd.spr).prepc_location = TreeSprite.mkscale(0.2f);
                 }
             }
         }

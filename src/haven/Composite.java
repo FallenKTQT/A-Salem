@@ -43,6 +43,7 @@ public class Composite extends Drawable {
     public int pseq;
     private List<MD> nmod;
     private List<ED> nequ;
+    public Location prepc_location = null;
     
     boolean show_radius = false;
     List<Gob.Overlay> radii = new ArrayList<>();
@@ -78,6 +79,10 @@ public class Composite extends Drawable {
 	    return;
 	}
 	checkRadius();
+        if(this.prepc_location != null) {
+            rl.prepc(this.prepc_location);
+            rl.prepc(States.normalize);
+        }
 	rl.add(comp, null);
     }
 	
